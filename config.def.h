@@ -87,6 +87,9 @@ static const char *audiomutecmd[] = { "pactl", "set-sink-mute", "@DEFAULT_SINK@"
 static const char *audiomicmutecmd[] = { "pactl", "set-source-mute", "@DEFAULT_SOURCE@", "toggle", NULL };
 static const char *brightnessupcmd[] = { "brightnessctl", "set", "5%+", NULL };
 static const char *brightnessdowncmd[] = { "brightnessctl", "set", "5%-", NULL };
+static const char *scrotdesktopcmd[] = { "/home/zezo/.local/bin/i3-scrot.sh", NULL };
+static const char *scrotactivecmd[] = { "/home/zezo/.local/bin/i3-scrot.sh", "--window", NULL };
+static const char *scrotareacmd[] = { "/home/zezo/.local/bin/i3-scrot.sh", "--select", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key                       function        argument */
@@ -133,6 +136,9 @@ static const Key keys[] = {
 	{ 0,                            XF86XK_AudioRaiseVolume,  spawn,          {.v = audioraisevolumecmd } },
 	{ 0,                            XF86XK_MonBrightnessUp,   spawn,          {.v = brightnessupcmd } },
 	{ 0,                            XF86XK_MonBrightnessDown, spawn,          {.v = brightnessdowncmd } },
+	{ 0,                            XK_Print,                 spawn,          {.v = scrotdesktopcmd } },
+	{ MODKEY,                       XK_Print,                 spawn,          {.v = scrotactivecmd } },
+	{ MODKEY|ShiftMask,             XK_Print,                 spawn,          {.v = scrotareacmd } },
 };
 
 /* button definitions */
